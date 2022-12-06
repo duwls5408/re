@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head lang="ko">
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+ document.getElementById("preview").onclick=processText;
+}
+
+function processText() {
+ var txtBox = document.getElementById("inputbox");
+ var lines = txtBox.value.split("\n");
+
+ // generate HTML version of text
+ var resultString  = "<p>";
+ for (var i = 0; i < lines.length; i++) {
+   resultString += lines[i] + "<br />";
+ }
+ resultString += "</p>";
+
+ // print out to page
+ var   blk   = document.getElementById("result");
+ blk.innerHTML  =  resultString; 
+}
+
+localStorage.setItem("inputbox", "result");
+const name = localStorage.getItem("inputbox");
+</script>
+
+</head>
+<body>
+<textarea id="inputbox" cols="20" rows="10" style="white-space: pre;"></textarea>
+<div><button id="preview">보관하기</button></div>
+<div id="result"></div>
+</body>
